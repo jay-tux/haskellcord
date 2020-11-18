@@ -1,0 +1,31 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 9f7bca21cf3caa924427c90cf6d3dbd62edae5eb06c01258b5412bcbae93bc2b
+
+name:           Jay's Hakell Dicord Bot
+version:        0.1.0.0
+description:    A simple Discord bot, written in Haskell
+homepage:       https://github.com/githubuser/haskellcord
+bug-reports:    https://github.com/githubuser/haskellcord/issues
+author:         jay-tux
+copyright:      2020 jay-tux
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+executable haskellcord
+  main-is:             src/Main.hs
+  default-language:    Haskell2010
+  ghc-options:         -threaded
+  build-depends:       base, text, discord-haskell, unliftio
+
+source-repository head
+  type: git
+  location: https://github.com/jay-tux/haskellcord
