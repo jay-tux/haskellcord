@@ -7,6 +7,8 @@ import qualified Data.Text.IO as TIO
 import UnliftIO
 import UnliftIO.Concurrent
 
+import qualified Modules.Token as Token
+
 import Discord
 import Discord.Types
 import qualified Discord.Requests as R
@@ -17,7 +19,7 @@ main = pingpongExample
 -- | Replies "pong" to every message that starts with "ping"
 pingpongExample :: IO ()
 pingpongExample = do userFacingError <- runDiscord $ def
-                                            { discordToken = "Nzc4NTc4NzE0OTM3MTMxMDI5.X7UB7g.zpv0tBFnIHq7BRyxPRGGvkrfg_s"
+                                            { discordToken = Token.token
                                             , discordOnEvent = eventHandler }
                      TIO.putStrLn userFacingError
 
