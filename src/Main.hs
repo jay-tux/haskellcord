@@ -1,13 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}  -- allows "string literals" to be Text
 
 import Control.Monad (when)
-import Data.Text (isPrefixOf, toLower, Text, pack)
+import Data.Text (isPrefixOf, toLower, Text, pack, unpack)
 import qualified Data.Text.IO as TIO
 
 import UnliftIO
 import UnliftIO.Concurrent
 
 import Modules.Token
+import qualified Modules.Commands as Commands
 
 import Discord
 import Discord.Types
@@ -26,10 +27,10 @@ pingpongExample = do putStrLn "Bot online!"
 
 eventHandler :: Event -> DiscordHandler ()
 eventHandler event = case event of
-       MessageCreate m -> when (not (fromBot m) && isPing (messageText m)) $ do
+       MessageCreate m -> when (not (fromBot m) && (Commands.isCommand $ messageText m)) $ do
 --               _ <- restCall (R.CreateReaction (messageChannel m, messageId m) "eyes")
 --               threadDelay (4 * 10^6)
-               _ <- restCall (R.CreateMessage (messageChannel m) "Pong!")
+               _ <- restCall (R.CreateMessage (messageChannel m) . Commands.runCommand $ messageText m)
                pure ()
        _ -> pure ()
 
