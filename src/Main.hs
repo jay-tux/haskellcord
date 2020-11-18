@@ -1,13 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}  -- allows "string literals" to be Text
 
 import Control.Monad (when)
-import Data.Text (isPrefixOf, toLower, Text)
+import Data.Text (isPrefixOf, toLower, Text, pack)
 import qualified Data.Text.IO as TIO
 
 import UnliftIO
 import UnliftIO.Concurrent
 
-import qualified Modules.Token as Token
+import Token
 
 import Discord
 import Discord.Types
@@ -18,8 +18,9 @@ main = pingpongExample
 
 -- | Replies "pong" to every message that starts with "ping"
 pingpongExample :: IO ()
-pingpongExample = do userFacingError <- runDiscord $ def
-                                            { discordToken = Token.token
+pingpongExample = do putStrLn "Bot online!"
+                     userFacingError <- runDiscord $ def
+                                            { discordToken = pack token
                                             , discordOnEvent = eventHandler }
                      TIO.putStrLn userFacingError
 

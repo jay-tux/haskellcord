@@ -6,7 +6,7 @@ cabal-version: 1.12
 --
 -- hash: 9f7bca21cf3caa924427c90cf6d3dbd62edae5eb06c01258b5412bcbae93bc2b
 
-name:           Jay's Hakell Dicord Bot
+name:           discordbot
 version:        0.1.0.0
 description:    A simple Discord bot, written in Haskell
 homepage:       https://github.com/githubuser/haskellcord
@@ -25,6 +25,8 @@ executable haskellcord
   default-language:    Haskell2010
   ghc-options:         -threaded
   build-depends:       base, text, discord-haskell, unliftio
+  other-modules:       Token
+  hs-source-dirs:      ., src, src/Modules
 
 source-repository head
   type: git

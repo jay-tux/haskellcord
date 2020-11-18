@@ -3,7 +3,7 @@
 run=false
 
 if [ $# == 1 ]; then
-    if [ $1 == '-r' || $1 == '-run' ]; then
+    if [ $1 == '-r' ]; then
         run=true
     fi
 fi
