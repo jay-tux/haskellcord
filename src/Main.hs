@@ -7,7 +7,7 @@ import qualified Data.Text.IO as TIO
 import UnliftIO
 import UnliftIO.Concurrent
 
-import Token
+import Modules.Token
 
 import Discord
 import Discord.Types
